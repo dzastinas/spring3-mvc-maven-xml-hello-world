@@ -11,6 +11,8 @@
         http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<context:component-scan base-package="io.web.controller" />
+	<context:component-scan base-package="io.web.service" />
+	<context:component-scan base-package="io.web.validator" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,6 +23,7 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+
 
   <!--
   // View resolver that delegates to other view resolvers based on the
@@ -44,10 +47,25 @@
 
   <bean class="org.springframework.mock.web.MockServletContext"/>
 
+  <!--<bean id="validator" class="net.sf.oval.Validator">-->
+    <!--<constructor-arg>-->
+      <!--<list>-->
+        <!--<bean class="net.sf.oval.configuration.xml.XMLConfigurer">-->
+          <!--&lt;!&ndash;<constructor-arg type="java.io.InputStream" value="classpath:com/acme/OValConfiguration.xml" />&ndash;&gt;-->
+        <!--</bean>-->
+      <!--</list>-->
+    <!--</constructor-arg>-->
+  <!--</bean>-->
+
+  <bean id="validator"
+        class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
   <mvc:annotation-driven />
+
+
  
 	<!--<mvc:annotation-driven enableMatrixVariables="true"-->
                          <!--content-negotiation-manager="contentNegotiationManager" />-->

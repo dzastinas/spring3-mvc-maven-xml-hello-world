@@ -26,8 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration()
-//@ContextConfiguration(classes = {TestContext.class, AppConfig.class})
-//@ContextConfiguration(classes = AppConfig.class)
 @ContextConfiguration({
         "file:src/main/webapp/WEB-INF/spring-web-servlet.xml"
 })
@@ -54,13 +52,6 @@ public class ExampleTests {
         mockMvc.perform(get("/hotels3"))
                 .andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].name", is("a")));
-
-//        MvcResult a = mockMvc.perform(get("/hotels3"))
-//                .andExpect(status().isOk()).andExpect(jsonPath("$.name", is("a"))).andReturn();
-////                .andExpect(view().name(ErrorController.VIEW_NOT_FOUND))
-////                .andExpect(forwardedUrl("/WEB-INF/jsp/error/404.jsp"));
-
-//        a.getResponse().getContentAsString();
     }
 
     @Test
